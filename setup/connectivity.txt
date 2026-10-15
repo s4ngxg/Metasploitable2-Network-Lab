@@ -1,0 +1,18 @@
+=== Kali IP ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             192.168.77.10/24 
+
+=== Routing Table ===
+192.168.77.0/24 dev eth0 proto kernel scope link src 192.168.77.10 metric 100 
+
+=== Connectivity Test ===
+PING 192.168.77.20 (192.168.77.20) 56(84) bytes of data.
+64 bytes from 192.168.77.20: icmp_seq=1 ttl=64 time=0.459 ms
+64 bytes from 192.168.77.20: icmp_seq=2 ttl=64 time=0.312 ms
+64 bytes from 192.168.77.20: icmp_seq=3 ttl=64 time=0.261 ms
+64 bytes from 192.168.77.20: icmp_seq=4 ttl=64 time=0.413 ms
+64 bytes from 192.168.77.20: icmp_seq=5 ttl=64 time=0.450 ms
+
+--- 192.168.77.20 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4092ms
+rtt min/avg/max/mdev = 0.261/0.379/0.459/0.078 ms

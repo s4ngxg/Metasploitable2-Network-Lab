@@ -1,0 +1,7 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-10-13 00:58 EDT
+Nmap scan report for 192.168.77.20
+Host is up (0.00030s latency).
+MAC Address: 00:0C:29:CC:42:B2 (VMware)
+Nmap scan report for 192.168.77.10
+Host is up.
+Nmap done: 256 IP addresses (2 hosts up) scanned in 28.08 seconds

